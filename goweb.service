@@ -1,0 +1,21 @@
+[Unit]
+Description=goweb http server
+ConditionPathExists=/home/luispf/dev/goapp
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+
+WorkingDirectory=/home/luispf/dev/goapp
+#NOTE: MAIN IS THE NAME OF THE BINARY APPLICATION
+ExecStart=/home/luispf/dev/goapp/main
+
+#ExecStartPre=/bin/chmod 775 /home/luispf/dev/goapp/main
+
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
